@@ -1,4 +1,3 @@
-
 name: 'ucv'
 version: '1.0.0'
 config-version: 2
@@ -20,5 +19,9 @@ models:
   ucv:
     staging:
       +materialized: view
+      +database: workspace
+      +schema: silver
     intermediate:
       +materialized: view
+      +database: workspace
+      +schema: gold
