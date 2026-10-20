@@ -1,3 +1,4 @@
+
 name: 'ucv'
 version: '1.0.0'
 config-version: 2
@@ -15,13 +16,20 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+
 models:
   ucv:
     staging:
-      +materialized: view
-      +database: workspace
+      +catalog: workspace
       +schema: silver
-    intermediate:
       +materialized: view
-      +database: workspace
+
+    intermediate:
+      +catalog: workspace
+      +schema: silver
+      +materialized: view
+
+    marts:
+      +catalog: workspace
       +schema: gold
+      +materialized: table
